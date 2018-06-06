@@ -1,3 +1,3 @@
-## Welcome to GitHub
+## Mike Angelo Saraus
 
-Mike Angelo Saraus
+>> Feel free to browse my projects.
