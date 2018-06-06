@@ -1,3 +1,3 @@
 ## Mike Angelo Saraus
 
->> Feel free to browse my projects.
+>> Feel free to contact me [mail@mikesaraus.tk](mailto:mail@mikesaraus.tk "E-mail").
