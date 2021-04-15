@@ -1,0 +1,158 @@
+
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>@mikesaraus</title>
+        <meta property="og:title" content="mikesaraus">
+        <meta property="og:locale" content="en_US">
+        <meta name="description" content="Make things as simple as possible, but not simpler.">
+        <meta property="og:description" content="Make things as simple as possible, but not simpler.">
+        <link href="https://mikesaraus.github.io/favicon.ico" rel="shortcut icon">
+        <meta property="og:url" content="https://mikesaraus.github.io/">
+        <meta property="og:site_name" content="mikesaraus">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <style type="text/css">
+            html {
+                color: rgb(220, 220, 220);
+                background-color: rgb(0, 0, 0);
+                cursor: none !important;    
+            }
+            body {
+                overflow-wrap: normal;
+                overflow-wrap: break-word;
+                white-space: wrap;
+                overflow: hidden;
+            } 
+            .baryabol{
+                color: rgb(0, 255, 0);
+            }
+            .panktion{
+                color: rgb(0, 100, 255);
+            }
+            .estring{
+                color: rgb(255, 50, 50);
+            }
+            #makinilya{
+                overflow-wrap: normal;
+                overflow-wrap: break-word;
+                white-space: wrap;
+                font-size: 1em;
+                margin: 0;
+                font-family: "Courier New";
+            }
+            #makinilya::after {
+                content: "|";
+                animation: blink 500ms linear infinite alternate;
+            }
+            @-webkit-keyframes blink{
+                0%{opacity: 0;}
+                100%{opacity: 1;}
+            }
+            @-moz-keyframes blink{
+                0%{opacity: 0;}
+                100%{opacity: 1;}
+            }
+            @keyframes blink{
+                0%{opacity: 0;}
+                100%{opacity: 1;}
+            }
+        </style>
+    </head>
+<body>
+<pre id="makinilya">
+<span class="baryabol">import</span> os <span class="baryabol">as</span> life
+<span class="baryabol">from</span> os <span class="baryabol">import</span> listdir <span class="baryabol">as</span> everything
+
+brain = []
+
+<span class="baryabol">def</span> <span class="panktion">from_beginning</span>():
+    <span class="baryabol">return</span> life.path.abspath(life.sep)
+
+<span class="baryabol">try:</span>
+    <span class="baryabol">for</span> knowledge <span class="baryabol">in</span> everything(<span class="panktion">from_beginning</span>()):
+        brain.append(knowledge)
+<span class="baryabol">except:</span>
+    <span class="baryabol">print</span>(<span class="estring">"Once you stop learning, you start dying!"</span>)
+
+<span class="baryabol">for</span> my, learnings <span class="baryabol">in</span> enumerate(brain):
+    <span class="baryabol">print</span>(<span class="estring">"[{:}] {:}"</span>.format(my, learnings))
+
+</pre>
+
+    <script type="text/javascript">
+        function sinugdanan(t) {
+            var HTML = t.innerHTML;
+            t.innerHTML = "";
+            var angTudlo = 0,
+                ilhanan = "",
+                sulatIlhanan = false,
+                ilhananAbri = false,
+                kapaspasPagsulat = 100,
+                diliPermiKapaspas = 0;
+            var type = function() {
+                if (sulatIlhanan === true) {
+                    ilhanan += HTML[angTudlo];
+                }
+                if (HTML[angTudlo] === "<") {
+                    diliPermiKapaspas = 0;
+                    if (ilhananAbri) {
+                        ilhananAbri = false;
+                        sulatIlhanan = true;
+                    } else {
+                        ilhanan = "";
+                        ilhananAbri = true;
+                        sulatIlhanan = true;
+                        ilhanan += HTML[angTudlo];
+                    }
+                }
+                if (!sulatIlhanan && ilhananAbri) {
+                    ilhanan.innerHTML += HTML[angTudlo];
+                }
+                if (!sulatIlhanan && !ilhananAbri) {
+                    if (HTML[angTudlo] === " ") {
+                        diliPermiKapaspas = 0;
+                    }
+                    else {
+                        diliPermiKapaspas = (Math.random() * kapaspasPagsulat) + 50;
+                    }
+                    t.innerHTML += HTML[angTudlo];
+                }
+                if (sulatIlhanan === true && HTML[angTudlo] === ">") {
+                    diliPermiKapaspas = (Math.random() * kapaspasPagsulat) + 50;
+                    sulatIlhanan = false;
+                    if (ilhananAbri) {
+                        var newSpan = document.createElement("span");
+                        t.appendChild(newSpan);
+                        newSpan.innerHTML = ilhanan;
+                        ilhanan = newSpan.firstChild;
+                    }
+                }
+                angTudlo += 1;
+                if (angTudlo < HTML.length - 1) {
+                    setTimeout(type, diliPermiKapaspas);
+                }
+            };
+            return {
+                type: type
+            };
+        }
+        var typer = document.getElementById('makinilya');
+        makinilya = sinugdanan(makinilya);
+        makinilya.type();
+    </script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-120448615-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+</body>
+</html>
