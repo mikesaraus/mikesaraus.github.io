@@ -14,6 +14,7 @@ function openLink (url, callback) {
     xhr.onload = function () {
         var response = {
             headers: xhr.getAllResponseHeaders(),
+            type: xhr.getResponseHeader("content-type"),
             isJSON: xhr.getResponseHeader("content-type") == ("application/json")
         };
         if (xhr.status === 200) {
