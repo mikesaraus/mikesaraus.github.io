@@ -1,7 +1,8 @@
 
-<!doctype html>
+<!Doctype html>
 <html lang="en-US">
     <head>
+        <script type="text/javascript" src="main.js"></script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>@mikesaraus</title>
@@ -16,52 +17,6 @@
         <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        <style type="text/css">
-            html {
-                color: rgb(220, 220, 220);
-                background-color: rgb(0, 0, 0);
-                cursor: none !important;    
-            }
-            body {
-                overflow-wrap: normal;
-                overflow-wrap: break-word;
-                white-space: wrap;
-                overflow: hidden;
-            } 
-            .baryabol{
-                color: rgb(0, 255, 0);
-            }
-            .panktion{
-                color: rgb(0, 100, 255);
-            }
-            .estring{
-                color: rgb(255, 50, 50);
-            }
-            #makinilya{
-                overflow-wrap: normal;
-                overflow-wrap: break-word;
-                white-space: wrap;
-                font-size: 1em;
-                margin: 0;
-                font-family: "Courier New";
-            }
-            #makinilya::after {
-                content: "|";
-                animation: blink 500ms linear infinite alternate;
-            }
-            @-webkit-keyframes blink{
-                0%{opacity: 0;}
-                100%{opacity: 1;}
-            }
-            @-moz-keyframes blink{
-                0%{opacity: 0;}
-                100%{opacity: 1;}
-            }
-            @keyframes blink{
-                0%{opacity: 0;}
-                100%{opacity: 1;}
-            }
-        </style>
     </head>
 <body>
 <pre id="makinilya">
@@ -73,7 +28,7 @@ brain = []
 <span class="baryabol">def</span> <span class="panktion">from_beginning</span>():
     <span class="baryabol">return</span> life.path.abspath(life.sep)
 
-<span class="baryabol">try:</span>
+<span class="baryabol">try:</span>makinilya
     <span class="baryabol">for</span> knowledge <span class="baryabol">in</span> everything(<span class="panktion">from_beginning</span>()):
         brain.append(knowledge)
 <span class="baryabol">except:</span>
@@ -83,67 +38,33 @@ brain = []
     <span class="baryabol">print</span>(<span class="estring">"[{:}] {:}"</span>.format(my, learnings))
 
 </pre>
-
     <script type="text/javascript">
-        function sinugdanan(t) {
-            var HTML = t.innerHTML;
-            t.innerHTML = "";
-            var angTudlo = 0,
-                ilhanan = "",
-                sulatIlhanan = false,
-                ilhananAbri = false,
-                kapaspasPagsulat = 100,
-                diliPermiKapaspas = 0;
-            var type = function() {
-                if (sulatIlhanan === true) {
-                    ilhanan += HTML[angTudlo];
+        // End
+        if (getHashNSearch().length > 0 && getHashNSearch().includes("api")) {
+            document.title = "API Beta";
+            removeBodyChild("makinilya");
+            
+            var api_link = generateLink();
+            console.log("Connecting to: " + api_link);
+            openLink(api_link, (x, y, h)=>{
+                if (x==null) {
+                    console.log("Response: " + h.isJSON ? y : y);
+                    document.write(h.isJSON ? y : y);
+                } else {
+                    console.log(y);
+                    document.write({status: "error", code: parseInt(x), response: y});
                 }
-                if (HTML[angTudlo] === "<") {
-                    diliPermiKapaspas = 0;
-                    if (ilhananAbri) {
-                        ilhananAbri = false;
-                        sulatIlhanan = true;
-                    } else {
-                        ilhanan = "";
-                        ilhananAbri = true;
-                        sulatIlhanan = true;
-                        ilhanan += HTML[angTudlo];
-                    }
-                }
-                if (!sulatIlhanan && ilhananAbri) {
-                    ilhanan.innerHTML += HTML[angTudlo];
-                }
-                if (!sulatIlhanan && !ilhananAbri) {
-                    if (HTML[angTudlo] === " ") {
-                        diliPermiKapaspas = 0;
-                    }
-                    else {
-                        diliPermiKapaspas = (Math.random() * kapaspasPagsulat) + 50;
-                    }
-                    t.innerHTML += HTML[angTudlo];
-                }
-                if (sulatIlhanan === true && HTML[angTudlo] === ">") {
-                    diliPermiKapaspas = (Math.random() * kapaspasPagsulat) + 50;
-                    sulatIlhanan = false;
-                    if (ilhananAbri) {
-                        var newSpan = document.createElement("span");
-                        t.appendChild(newSpan);
-                        newSpan.innerHTML = ilhanan;
-                        ilhanan = newSpan.firstChild;
-                    }
-                }
-                angTudlo += 1;
-                if (angTudlo < HTML.length - 1) {
-                    setTimeout(type, diliPermiKapaspas);
-                }
-            };
-            return {
-                type: type
-            };
+            });
+        } else {
+            var home_css = document.createElement("link");
+            home_css.rel = "stylesheet";
+            home_css.href = "style/home.css";
+            addElement(home_css, "head", true);
+            var home_script = document.createElement("script");
+            home_script.type = "text/javascript";
+            home_script.src = "script/home.js";
+            addElement(home_script, "body", false);
         }
-        var typer = document.getElementById('makinilya');
-        makinilya = sinugdanan(makinilya);
-        makinilya.type();
     </script>
 
     <script>
