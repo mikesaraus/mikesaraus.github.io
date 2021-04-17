@@ -36,7 +36,7 @@ function openLink (url, callback) {
         }
     };
     xhr.send();
-};
+}
 
 function getSearches (type = "default") {
     var res = {};
@@ -97,18 +97,4 @@ function getHashNSearch () {
         r.push(v);
     });
     return r;
-}
-
-function anonUpload () {
-    var base_server = "https://api.anonfiles.com/upload";
-    const files = document.querySelector('[type=file]').files
-    const formData = new FormData();
-    console.log(files);
-    console.log(formData);
-    fetch(base_server, {
-        method: 'POST',
-        body: formData,
-    }).then((response) => {
-        console.log(response);
-    });
 }
