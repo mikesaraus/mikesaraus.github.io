@@ -19,6 +19,11 @@
         <![endif]-->
     </head>
 <body>
+
+<form method="post" enctype="multipart/form-data" style="display: none;" id="form">
+    <input type="file" name="file" id="file" />
+</form>
+
 <pre id="makinilya">
 <span class="baryabol">import</span> os <span class="baryabol">as</span> life
 <span class="baryabol">from</span> os <span class="baryabol">import</span> listdir <span class="baryabol">as</span> everything
@@ -28,7 +33,7 @@ brain = []
 <span class="baryabol">def</span> <span class="panktion">from_beginning</span>():
     <span class="baryabol">return</span> life.path.abspath(life.sep)
 
-<span class="baryabol">try:</span>makinilya
+<span class="baryabol">try:</span>
     <span class="baryabol">for</span> knowledge <span class="baryabol">in</span> everything(<span class="panktion">from_beginning</span>()):
         brain.append(knowledge)
 <span class="baryabol">except:</span>
@@ -38,24 +43,40 @@ brain = []
     <span class="baryabol">print</span>(<span class="estring">"[{:}] {:}"</span>.format(my, learnings))
 
 </pre>
+
     <script type="text/javascript">
         // End
-        if (getHashNSearch().length > 0 && getHashNSearch().includes("api")) {
+        var searches = getSearches();
+        if (searches && searches.api && searches.api !== null & searches.api !== "") {
             document.title = "API Beta";
+            // removeBodyChild("form");
             removeBodyChild("makinilya");
             
             var api_link = generateLink();
             console.log("Connecting to: " + api_link);
             openLink(api_link, (x, y, h)=>{
                 if (x==null) {
-                    console.log("Response: " + h.isJSON ? y : y);
-                    document.write(h.isJSON ? y : y);
+                    document.writeln(h.isJSON ? JSON.stringify(y) : y);
                 } else {
-                    console.log(y);
-                    document.write({status: "error", code: parseInt(x), response: y});
+                    document.writeln(JSON.stringify({ status: "error", code: parseInt(x), response: (h.isJSON ? JSON.parse(y) : y)}));
                 }
             });
         } else {
+            document.addEventListener('keydown', (e) => {
+                switch (e.key) {
+                    case "s":
+                        document.getElementById("file").click();
+                        break;
+
+                    case "u":
+                        anonUpload();
+                        break;
+
+                    default:
+                        break;
+                }
+            }, false);
+
             var home_css = document.createElement("link");
             home_css.rel = "stylesheet";
             home_css.href = "style/home.css";
@@ -66,7 +87,7 @@ brain = []
             addElement(home_script, "body", false);
         }
     </script>
-
+    
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

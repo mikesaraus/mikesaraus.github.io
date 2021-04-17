@@ -8,6 +8,18 @@ var d = {
     search: document.location.search
 };
 
+function generateLink () {
+    var link = getSearches().api;
+    var keys = getSearches("keys");
+    var values = getSearches("values");
+    keys.forEach((v, i) => {
+        if (v != "api") {
+            link += "&" + v + "=" + values[i];
+        }
+    });
+    return link;
+}
+
 function openLink (url, callback) {
     var xhr = new XMLHttpRequest();
     var a = xhr.open('GET', url, true);
@@ -15,7 +27,7 @@ function openLink (url, callback) {
         var response = {
             headers: xhr.getAllResponseHeaders(),
             type: xhr.getResponseHeader("content-type"),
-            isJSON: xhr.getResponseHeader("content-type") == ("application/json")
+            isJSON: xhr.getResponseHeader("content-type").includes("application/json")
         };
         if (xhr.status === 200) {
             callback(null, xhr.response, response);
@@ -30,8 +42,8 @@ function getSearches (type = "default") {
     var res = {};
     var tmp = d.search.slice(1, d.search.length).split("&").filter(i => i);
     tmp.forEach((v, i) => {
-        var k = v.slice(0, v.indexOf("="));
-        var v = v.slice(v.indexOf("=") + 1, v.length);
+        var k = v.indexOf("=") >= 0 ? v.slice(0, v.indexOf("=")) : v;
+        var v = v.indexOf("=") >= 0 ? v.slice(v.indexOf("=") + 1, v.length) : "";
         res[k] = v;
     });
     switch (type) {
@@ -42,7 +54,7 @@ function getSearches (type = "default") {
         case "values":
             var x = []
             tmp.forEach(v => {
-                v = v.slice(v.indexOf("=") + 1, v.length);
+                v = v.indexOf("=") >= 0 ? v.slice(v.indexOf("=") + 1, v.length) : "";
                 x.push(v);
             });
             res = x;
@@ -87,14 +99,16 @@ function getHashNSearch () {
     return r;
 }
 
-function generateLink () {
-    var link = getSearches().api;
-    var keys = getSearches("keys");
-    var values = getSearches("values");
-    keys.forEach((v, i) => {
-        if (v != "api") {
-            link += "&" + v + "=" + values[i];
-        }
+function anonUpload () {
+    var base_server = "https://api.anonfiles.com/upload";
+    const files = document.querySelector('[type=file]').files
+    const formData = new FormData();
+    console.log(files);
+    console.log(formData);
+    fetch(base_server, {
+        method: 'POST',
+        body: formData,
+    }).then((response) => {
+        console.log(response);
     });
-    return link;
 }
