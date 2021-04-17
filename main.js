@@ -6,7 +6,7 @@ var d = {
     path: document.location.pathname,
     hash: document.location.hash,
     search: document.location.search
-};
+}
 
 function generateLink () {
     var link = getSearches().api;
@@ -23,6 +23,7 @@ function generateLink () {
 function openLink (url, callback) {
     var xhr = new XMLHttpRequest();
     var a = xhr.open('GET', url, true);
+    console.log("Connecting to: " + url);
     xhr.onload = function () {
         var response = {
             headers: xhr.getAllResponseHeaders(),
@@ -30,9 +31,11 @@ function openLink (url, callback) {
             isJSON: xhr.getResponseHeader("content-type").includes("application/json")
         };
         if (xhr.status === 200) {
+            console.log(xhr.response);
             callback(null, xhr.response, response);
         } else {
-            callback(status, xhr.response, response);
+            console.log(xhr.response);
+            callback(xhr.status, xhr.response, response);
         }
     };
     xhr.send();

@@ -46,14 +46,13 @@ brain = []
         if (searches && searches.api && searches.api !== null & searches.api !== "") {
             document.title = "API Beta";
             removeBodyChild("makinilya");
-            
             var api_link = generateLink();
-            console.log("Connecting to: " + api_link);
             openLink(api_link, (x, y, h)=>{
+                y = h.isJSON ? JSON.parse(y) : y;
                 if (x==null) {
                     document.writeln(h.isJSON ? JSON.stringify(y) : y);
                 } else {
-                    document.writeln(JSON.stringify({ status: "error", code: parseInt(x), response: (h.isJSON ? JSON.parse(y) : y)}));
+                    document.writeln(JSON.stringify({ status: "error", code: parseInt(x), response: y}));
                 }
             });
         } else {
