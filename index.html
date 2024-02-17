@@ -1,36 +1,25 @@
-
-<!Doctype html>
+<!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <script type="text/javascript" src="./main.js"></script>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>@mikesaraus</title>
-        <meta property="og:title" content="mikesaraus">
-        <meta property="og:locale" content="en_US">
-        <meta name="description" content="Make things as simple as possible, but not simpler.">
-        <meta property="og:description" content="Make things as simple as possible, but not simpler.">
-        <link href="./favicon.ico" rel="shortcut icon">
-        <meta property="og:url" content="./">
-        <meta property="og:site_name" content="mikesaraus">
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        <meta http-equiv="refresh" content="70;URL='https://github.com/mikesaraus/'" />
-        <!--[if lt IE 9]>
-        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <script data-ad-client="ca-pub-2713120218711959" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120448615-2"></script>
-        <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-120448615-2');
-        </script>
-    </head>
-<body>
-
-<pre id="makinilya">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>@mikesaraus</title>
+    <meta property="og:title" content="mikesaraus" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="description" content="Make things as simple as possible, but not simpler." />
+    <meta property="og:description" content="Make things as simple as possible, but not simpler." />
+    <link href="https://avatars.githubusercontent.com/u/16617782?v=4" rel="shortcut icon" />
+    <meta property="og:url" content="./" />
+    <meta property="og:site_name" content="mikesaraus" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta http-equiv="refresh" content="70;URL='https://github.com/mikesaraus/'" />
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <pre id="makinilya">
 <span class="baryabol">import</span> os <span class="baryabol">as</span> life
 <span class="baryabol">from</span> os <span class="baryabol">import</span> listdir <span class="baryabol">as</span> everything
 
@@ -50,31 +39,21 @@ brain = []
 
 </pre>
 
-    <script type="text/javascript">
-        // End
-        var searches = getSearches();
-        if (searches && searches.api && searches.api !== null & searches.api !== "") {
-            document.title = "API Beta";
-            removeBodyChild("makinilya");
-            var api_link = generateLink();
-            openLink(api_link, (x, y, h)=>{
-                y = h.isJSON ? JSON.parse(y) : y;
-                if (x==null) {
-                    document.writeln(h.isJSON ? JSON.stringify(y) : y);
-                } else {
-                    document.writeln(JSON.stringify({ status: "error", code: parseInt(x), response: y}));
-                }
-            });
-        } else {
-            var home_css = document.createElement("link");
-            home_css.rel = "stylesheet";
-            home_css.href = "style/home.css";
-            addElement(home_css, "head", true);
-            var home_script = document.createElement("script");
-            home_script.type = "text/javascript";
-            home_script.src = "script/home.js";
-            addElement(home_script, "body", false);
-        }
+    <script
+      data-ad-client="ca-pub-2713120218711959"
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    ></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120448615-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-120448615-2')
     </script>
-</body>
+    <script type="text/javascript" src="./script/script.js"></script>
+  </body>
 </html>
